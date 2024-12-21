@@ -1,0 +1,73 @@
+Extract features!
+Time for extracting features: 2.65
+The matching result for image 0panda.png
+Top 1 similar image : 2.jpeg, with the similarity 99.61307644844055%
+Top 2 similar image : 4.jpeg, with the similarity 99.58519339561462%
+Top 3 similar image : 5.jpeg, with the similarity 99.58409070968628%
+Top 4 similar image : 3.jpeg, with the similarity 99.57888126373291%
+Top 5 similar image : 34.jpeg, with the similarity 99.56896305084229%
+
+The matching result for image 1plane.jpeg
+Top 1 similar image : 30.jpeg, with the similarity 99.59495067596436%
+Top 2 similar image : 8.jpeg, with the similarity 99.5837926864624%
+Top 3 similar image : 10.jpeg, with the similarity 99.5837926864624%
+Top 4 similar image : 27.jpeg, with the similarity 99.58122968673706%
+Top 5 similar image : 35.jpeg, with the similarity 99.57005977630615%
+
+The matching result for image 2lion.jpeg
+Top 1 similar image : 5.jpeg, with the similarity 99.56948757171631%
+Top 2 similar image : 13.jpeg, with the similarity 99.56185817718506%
+Top 3 similar image : 35.jpeg, with the similarity 99.56108331680298%
+Top 4 similar image : 50.jpeg, with the similarity 99.55136775970459%
+Top 5 similar image : 33.jpeg, with the similarity 99.54777359962463%
+
+The matching result for image 3car.jpeg
+Top 1 similar image : 42.jpeg, with the similarity 99.59943294525146%
+Top 2 similar image : 18.jpeg, with the similarity 99.57766532897949%
+Top 3 similar image : 17.jpeg, with the similarity 99.57575798034668%
+Top 4 similar image : 16.jpeg, with the similarity 99.57316517829895%
+Top 5 similar image : 44.jpeg, with the similarity 99.56287145614624%
+
+The matching result for image 4train.jpeg
+Top 1 similar image : 18.jpeg, with the similarity 99.57295060157776%
+Top 2 similar image : 24.jpeg, with the similarity 99.5633602142334%
+Top 3 similar image : 35.jpeg, with the similarity 99.5570182800293%
+Top 4 similar image : 42.jpeg, with the similarity 99.55503940582275%
+Top 5 similar image : 43.jpeg, with the similarity 99.55331683158875%
+
+The matching result for image 5ship.jpeg
+Top 1 similar image : 8.jpeg, with the similarity 99.56227540969849%
+Top 2 similar image : 10.jpeg, with the similarity 99.56227540969849%
+Top 3 similar image : 34.jpeg, with the similarity 99.56071376800537%
+Top 4 similar image : 31.jpeg, with the similarity 99.56071376800537%
+Top 5 similar image : 30.jpeg, with the similarity 99.55897331237793%
+
+The matching result for image 6chrysanthemum.jpeg
+Top 1 similar image : 34.jpeg, with the similarity 99.62146282196045%
+Top 2 similar image : 31.jpeg, with the similarity 99.62146282196045%
+Top 3 similar image : 32.jpeg, with the similarity 99.59045648574829%
+Top 4 similar image : 30.jpeg, with the similarity 99.5827853679657%
+Top 5 similar image : 35.jpeg, with the similarity 99.58176612854004%
+
+The matching result for image 7city.jpeg
+Top 1 similar image : 39.jpeg, with the similarity 99.6126651763916%
+Top 2 similar image : 36.jpeg, with the similarity 99.59376454353333%
+Top 3 similar image : 32.jpeg, with the similarity 99.59142208099365%
+Top 4 similar image : 33.jpeg, with the similarity 99.56973791122437%
+Top 5 similar image : 30.jpeg, with the similarity 99.56700205802917%
+
+The matching result for image 8camera.jpeg
+Top 1 similar image : 41.jpeg, with the similarity 99.61915612220764%
+Top 2 similar image : 44.jpeg, with the similarity 99.58404302597046%
+Top 3 similar image : 45.jpeg, with the similarity 99.56462383270264%
+Top 4 similar image : 43.jpeg, with the similarity 99.56437349319458%
+Top 5 similar image : 42.jpeg, with the similarity 99.56368207931519%
+
+The matching result for image 9violin.jpeg
+Top 1 similar image : 47.jpeg, with the similarity 99.64690208435059%
+Top 2 similar image : 48.jpeg, with the similarity 99.63594675064087%
+Top 3 similar image : 50.jpeg, with the similarity 99.59607124328613%
+Top 4 similar image : 49.jpeg, with the similarity 99.58329796791077%
+Top 5 similar image : 46.jpeg, with the similarity 99.57795143127441%
+
+Total Accuracy is 56.0%
