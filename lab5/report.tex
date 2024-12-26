@@ -101,9 +101,10 @@
 
     实验中直接采取了Pytorch自带的ResNet50预训练数据，并未在数据集上进一步训练，故效果明显偏差。
     dataset和target分别从网络上随机选取的十类物体的各5/1张图片组成，target中图像的第一位代表组号，
-    与dataset中的连续五张图片相对应。
+    与dataset中的连续五张图片相对应。（询问过助教，得知可以使用自己的数据集，且由于实验完成时间早于给定数据集的上传时间，
+    故不再用官方数据集实验）
 
-    代码见extract_feature，输出日志见后文。
+    代码见extract_feature.py 和 matching.py，输出日志见后文。
 
 \section{代码运行结果及实验结果分析}
 
@@ -135,6 +136,68 @@
     3-4）
 
 \subsection{2.图像特征提取}
+
+\subsubsection{组内匹配结果}
+
+    输出日志如下：
+
+\begin{lstlisting}
+Top similar image for 1.jpg is 3, with the similarity = 0.8992043137550354
+Top similar image for 2.jpg is 5, with the similarity = 0.9110924601554871
+Top similar image for 3.jpg is 4, with the similarity = 0.9160496592521667
+Top similar image for 4.jpg is 3, with the similarity = 0.9160496592521667
+Top similar image for 5.jpg is 2, with the similarity = 0.9110924601554871
+Top similar image for 6.jpg is 8, with the similarity = 0.9218133687973022
+Top similar image for 7.jpg is 8, with the similarity = 0.8365278840065002
+Top similar image for 8.jpg is 10, with the similarity = 0.9999998807907104
+Top similar image for 9.jpg is 8, with the similarity = 0.8966230154037476
+Top similar image for 10.jpg is 8, with the similarity = 0.9999998807907104
+Top similar image for 11.jpg is 13, with the similarity = 0.8870809078216553
+Top similar image for 12.jpg is 13, with the similarity = 0.8886767029762268
+Top similar image for 13.jpg is 12, with the similarity = 0.8886767029762268
+Top similar image for 14.jpg is 13, with the similarity = 0.8638516068458557
+Top similar image for 15.jpg is 12, with the similarity = 0.8642439842224121
+Top similar image for 16.jpg is 18, with the similarity = 0.8890476226806641
+Top similar image for 17.jpg is 20, with the similarity = 0.906965434551239
+Top similar image for 18.jpg is 16, with the similarity = 0.8890476226806641
+Top similar image for 19.jpg is 16, with the similarity = 0.8632653951644897
+Top similar image for 20.jpg is 17, with the similarity = 0.906965434551239
+Top similar image for 21.jpg is 23, with the similarity = 0.8852415084838867
+Top similar image for 22.jpg is 23, with the similarity = 0.8848015069961548
+Top similar image for 23.jpg is 21, with the similarity = 0.8852415084838867
+Top similar image for 24.jpg is 23, with the similarity = 0.8745571970939636
+Top similar image for 25.jpg is 21, with the similarity = 0.8540061712265015
+Top similar image for 26.jpg is 29, with the similarity = 0.9438416957855225
+Top similar image for 27.jpg is 29, with the similarity = 0.9294333457946777
+Top similar image for 28.jpg is 26, with the similarity = 0.929874837398529
+Top similar image for 29.jpg is 26, with the similarity = 0.9438416957855225
+Top similar image for 30.jpg is 29, with the similarity = 0.9120800495147705
+Top similar image for 31.jpg is 34, with the similarity = 1.0
+Top similar image for 32.jpg is 31, with the similarity = 0.9030340313911438
+Top similar image for 33.jpg is 32, with the similarity = 0.8560066223144531
+Top similar image for 34.jpg is 31, with the similarity = 1.0
+Top similar image for 35.jpg is 32, with the similarity = 0.8173122406005859
+Top similar image for 36.jpg is 37, with the similarity = 0.7345681190490723
+Top similar image for 37.jpg is 40, with the similarity = 0.7811158299446106
+Top similar image for 38.jpg is 40, with the similarity = 0.8373205661773682
+Top similar image for 39.jpg is 40, with the similarity = 0.8014822006225586
+Top similar image for 40.jpg is 38, with the similarity = 0.8373205661773682
+Top similar image for 41.jpg is 44, with the similarity = 0.9528060555458069
+Top similar image for 42.jpg is 44, with the similarity = 0.9075242280960083
+Top similar image for 43.jpg is 44, with the similarity = 0.8757463097572327
+Top similar image for 44.jpg is 41, with the similarity = 0.9528060555458069
+Top similar image for 45.jpg is 41, with the similarity = 0.7752511501312256
+Top similar image for 46.jpg is 50, with the similarity = 0.8868175148963928
+Top similar image for 47.jpg is 48, with the similarity = 0.9488517045974731
+Top similar image for 48.jpg is 47, with the similarity = 0.9488517045974731
+Top similar image for 49.jpg is 47, with the similarity = 0.9397567510604858
+Top similar image for 50.jpg is 47, with the similarity = 0.9359409809112549
+
+\end{lstlisting}
+
+    可以看到数据集中的图片基本都能匹配到同组的图片，效果比较好。
+
+\subsubsection{ResNet50结果}
 
     输出日志如下：
 
@@ -251,12 +314,294 @@ Total Accuracy is 56.0%
 \caption{第2组结果}
 \end{figure}
 
-    第二组中，熊猫背后的栏杆颜色和狮子毛发颜色接近，且有相当的白色构成；
+    第2组中，熊猫背后的栏杆颜色和狮子毛发颜色接近，且有相当的白色构成；
     菊花和小提琴的整体色调也接近狮子，可能导致模型的误判。
+
+\newpage
+
+\subsubsection{DenseNet121结果}
+
+    输出日志如下：
+
+\begin{lstlisting}
+    Extract features!
+Time for extracting features: 2.69
+The matching result for image 0panda.png
+Top 1 similar image : 33.jpeg, with the similarity 99.78758692741394%
+Top 2 similar image : 2.jpeg, with the similarity 99.78005886077881%
+Top 3 similar image : 29.jpeg, with the similarity 99.77742433547974%
+Top 4 similar image : 23.jpeg, with the similarity 99.77494478225708%
+Top 5 similar image : 14.jpeg, with the similarity 99.77472424507141%
+
+The matching result for image 1plane.jpeg
+Top 1 similar image : 2.jpeg, with the similarity 99.76726770401001%
+Top 2 similar image : 29.jpeg, with the similarity 99.75847005844116%
+Top 3 similar image : 18.jpeg, with the similarity 99.75729584693909%
+Top 4 similar image : 14.jpeg, with the similarity 99.75498914718628%
+Top 5 similar image : 5.jpeg, with the similarity 99.75311756134033%
+
+The matching result for image 2lion.jpeg
+Top 1 similar image : 11.jpeg, with the similarity 99.67621564865112%
+Top 2 similar image : 33.jpeg, with the similarity 99.67612028121948%
+Top 3 similar image : 8.jpeg, with the similarity 99.67527389526367%
+Top 4 similar image : 10.jpeg, with the similarity 99.67527389526367%
+Top 5 similar image : 2.jpeg, with the similarity 99.67267513275146%
+
+The matching result for image 3car.jpeg
+Top 1 similar image : 2.jpeg, with the similarity 99.79782104492188%
+Top 2 similar image : 33.jpeg, with the similarity 99.79516267776489%
+Top 3 similar image : 11.jpeg, with the similarity 99.79370832443237%
+Top 4 similar image : 13.jpeg, with the similarity 99.79321956634521%
+Top 5 similar image : 23.jpeg, with the similarity 99.79282021522522%
+
+The matching result for image 4train.jpeg
+Top 1 similar image : 29.jpeg, with the similarity 99.77550506591797%
+Top 2 similar image : 13.jpeg, with the similarity 99.77332353591919%
+Top 3 similar image : 33.jpeg, with the similarity 99.77078437805176%
+Top 4 similar image : 9.jpeg, with the similarity 99.76699352264404%
+Top 5 similar image : 23.jpeg, with the similarity 99.76552724838257%
+
+The matching result for image 5ship.jpeg
+Top 1 similar image : 29.jpeg, with the similarity 99.79228377342224%
+Top 2 similar image : 33.jpeg, with the similarity 99.791020154953%
+Top 3 similar image : 2.jpeg, with the similarity 99.79086518287659%
+Top 4 similar image : 41.jpeg, with the similarity 99.78795647621155%
+Top 5 similar image : 14.jpeg, with the similarity 99.78739619255066%
+
+The matching result for image 6chrysanthemum.jpeg
+Top 1 similar image : 33.jpeg, with the similarity 99.78471994400024%
+Top 2 similar image : 2.jpeg, with the similarity 99.7795820236206%
+Top 3 similar image : 41.jpeg, with the similarity 99.77532625198364%
+Top 4 similar image : 5.jpeg, with the similarity 99.77325201034546%
+Top 5 similar image : 27.jpeg, with the similarity 99.77126717567444%
+
+The matching result for image 7city.jpeg
+Top 1 similar image : 33.jpeg, with the similarity 99.77474212646484%
+Top 2 similar image : 29.jpeg, with the similarity 99.75947141647339%
+Top 3 similar image : 23.jpeg, with the similarity 99.75870847702026%
+Top 4 similar image : 30.jpeg, with the similarity 99.75857734680176%
+Top 5 similar image : 2.jpeg, with the similarity 99.75383877754211%
+
+The matching result for image 8camera.jpeg
+Top 1 similar image : 33.jpeg, with the similarity 99.80140924453735%
+Top 2 similar image : 23.jpeg, with the similarity 99.79772567749023%
+Top 3 similar image : 2.jpeg, with the similarity 99.79690313339233%
+Top 4 similar image : 41.jpeg, with the similarity 99.7832179069519%
+Top 5 similar image : 42.jpeg, with the similarity 99.7820258140564%
+
+The matching result for image 9violin.jpeg
+Top 1 similar image : 33.jpeg, with the similarity 99.78200197219849%
+Top 2 similar image : 46.jpeg, with the similarity 99.76445436477661%
+Top 3 similar image : 2.jpeg, with the similarity 99.76444244384766%
+Top 4 similar image : 18.jpeg, with the similarity 99.76387023925781%
+Top 5 similar image : 8.jpeg, with the similarity 99.75879788398743%
+
+Total Accuracy is 16.0%
+\end{lstlisting}
+
+    相比于ResNet50， DenseNet121的效果明显偏差，已接近随机选取的正确率。
+    可能是相关网络结构设计不适合数据特征提取的需要，或是预训练参数效果不好的原因。
+
+    代码中仅调整了load model和features两个部分，具体见下：
+
+\begin{lstlisting}
+print('Load model: DenseNet121')
+model = torch.hub.load('pytorch/vision', 'densenet121', weights=True)
+
+def features(x):
+    x = model.features.conv0(x)
+    x = model.features.norm0(x)
+    x = model.features.relu0(x)
+    x = model.features.pool0(x)
+
+    x = model.features.denseblock1(x)
+    x = model.features.transition1(x)
+    x = model.features.denseblock2(x)
+    x = model.features.transition2(x)
+    x = model.features.denseblock3(x)
+    x = model.features.transition3(x)
+    x = model.features.denseblock4(x)
+
+    x = model.features.norm5(x)
+    x = torch.nn.functional.relu(x, inplace=True)
+    x = torch.nn.functional.adaptive_avg_pool2d(x, (1, 1))
+
+\end{lstlisting}
 
 \section{实验感想}
 
     本次实验学习了神经网络检测图像特征的方法，相较于传统方法准确率高且代码实现容易。
     不断调整参数和网络结构也有助于我们对神经网络不同部分的作用有更深入的理解。
+
+\section{代码}
+
+\subsection{extract\_feature.py}
+\begin{lstlisting}
+    # SJTU EE208
+
+import time
+
+import numpy as np
+import torch
+import torchvision.transforms as transforms
+from pyarrow.dataset import dataset
+from torchvision.datasets.folder import default_loader
+import os
+
+print('Load model: ResNet50')
+model = torch.hub.load('pytorch/vision', 'resnet50', weights=True)
+
+normalize = transforms.Normalize(mean=[0.485, 0.456, 0.406],
+                                 std=[0.229, 0.224, 0.225])
+trans = transforms.Compose([
+    transforms.Resize(256),
+    transforms.CenterCrop(224),
+    transforms.ToTensor(),
+    normalize,
+])
+
+# print('Prepare image data!')
+# test_image = default_loader('panda.png')
+# input_image = trans(test_image)
+# input_image = torch.unsqueeze(input_image, 0)
+
+
+def features(x):
+    x = model.conv1(x)
+    x = model.bn1(x)
+    x = model.relu(x)
+    x = model.maxpool(x)
+    x = model.layer1(x)
+    x = model.layer2(x)
+    x = model.layer3(x)
+    x = model.layer4(x)
+    x = model.avgpool(x)
+
+    return x
+
+
+print('Extract features!')
+start = time.time()
+image_features = []
+images = [f for f in os.listdir("./dataset") if os.path.isfile(os.path.join("./dataset", f))]
+for img in images:
+    image = default_loader(os.path.join("./dataset", img))
+    image = trans(image)
+    image = torch.unsqueeze(image, 0)
+    image_feature = features(image)
+    image_feature = image_feature.detach().numpy()
+    image_feature = np.resize(image_feature, image_feature.shape[1])
+    image_feature = image_feature / np.linalg.norm(image_feature)
+    image_features.append(image_feature)
+
+print('Time for extracting features: {:.2f}'.format(time.time() - start))
+
+target_images = [f for f in os.listdir("./target") if os.path.isfile(os.path.join("./target", f))]
+target_images = sorted(target_images, key=lambda x: int(x[0]))
+match = 0
+for img in target_images:
+    image = default_loader(os.path.join("./target", img))
+    image = trans(image)
+    image = torch.unsqueeze(image, 0)
+    image_feature = features(image)
+    image_feature = image_feature.detach().numpy()
+    image_feature = np.resize(image_feature, image_feature.shape[1])
+    image_feature = image_feature / np.linalg.norm(image_feature)
+    res = []
+    for j in range(len(image_features)):
+        mol = image_feature.dot(image_features[j])
+        res.append([mol, images[j]])
+    res = sorted(res, key=lambda x: -x[0])
+    print(f"The matching result for image {img}")
+    for j in range(5):
+        print(f"Top {j + 1} similar image : {res[j][1]}, with the similarity {res[j][0] * 100}%")
+        if int(img[0]) * 5 + 1 <= int(res[j][1].split(".")[0]) <= int(img[0]) * 5 + 5:
+            match += 1
+    print("")
+print(f"Total Accuracy is {match / len(target_images) * 20}%")
+\end{lstlisting}
+
+\subsection{matching.py}
+\begin{lstlisting}
+    import time
+import numpy as np
+import torch
+import torchvision.transforms as transforms
+from torchvision.datasets.folder import default_loader
+import os
+
+# Load the ResNet50 model
+print('Load model: ResNet50')
+# We load the model from the Torchvision repository
+model = torch.hub.load('pytorch/vision', 'resnet50', weights='IMAGENET1K_V1')
+
+# Make sure the model is in evaluation mode
+model.eval()
+
+# Normalization for ImageNet
+normalize = transforms.Normalize(mean=[0.485, 0.456, 0.406],
+                                 std=[0.229, 0.224, 0.225])
+
+# Specify the transformations
+trans = transforms.Compose([
+    transforms.Resize(256),
+    transforms.CenterCrop(224),
+    transforms.ToTensor(),
+    normalize,
+])
+
+# Define a function to extract features using ResNet50
+def features(x):
+    # Forward pass through the convolutional layers
+    with torch.no_grad():
+        x = model.conv1(x)
+        x = model.bn1(x)
+        x = model.relu(x)
+        x = model.maxpool(x)
+        x = model.layer1(x)
+        x = model.layer2(x)
+        x = model.layer3(x)
+        x = model.layer4(x)
+        x = model.avgpool(x)
+        x = torch.flatten(x, 1)
+    return x
+
+print('Extract features!')
+start = time.time()
+image_features = []
+dataset_path = "./dataset"
+
+# Check if dataset path exists
+if not os.path.exists(dataset_path):
+    raise FileNotFoundError(f"Dataset directory {dataset_path} not found.")
+
+images = [f for f in os.listdir(dataset_path) if os.path.isfile(os.path.join(dataset_path, f))]
+images = sorted(images, key = lambda x: int(x.split(".")[0]))
+if not images:
+    raise ValueError("No valid images found in the dataset directory.")
+
+for img in images:
+    image_path = os.path.join(dataset_path, img)
+    image = default_loader(image_path)
+    image = trans(image)
+    image = torch.unsqueeze(image, 0)  # Add a batch dimension
+    image_feature = features(image)
+    image_feature = image_feature.cpu().numpy().flatten()  # Flatten the feature vector
+    image_feature = image_feature / np.linalg.norm(image_feature)  # Normalize the feature
+    image_features.append(image_feature)
+
+# Calculate similarities between each pair of images
+for i in range(len(image_features)):
+    mol = []
+    for j in range(len(image_features)):
+        if i != j:
+            similarity = np.dot(image_features[i], image_features[j])
+            mol.append([similarity, j + 1])
+    mol = sorted(mol, key=lambda x: x[0], reverse=True)
+    print(f"Top similar image for {i + 1}.jpg is {mol[0][1]}, with the similarity = {mol[0][0]}")
+
+end = time.time()
+print(f"Feature extraction completed in {end - start:.2f} seconds.")
+\end{lstlisting}
 
 \end{document}
